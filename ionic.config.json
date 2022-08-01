@@ -1,0 +1,7 @@
+{
+  "name": "dynamodb-api",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
