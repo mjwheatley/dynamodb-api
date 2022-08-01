@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component } from '@angular/core';
-import { Hub } from 'aws-amplify';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { Auth, Hub } from 'aws-amplify';
 import { SessionService } from './services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+  styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   public formFields = {
     signIn: {
       username: {
@@ -26,7 +27,7 @@ export class AppComponent {
     },
     signUp: {
       email: {
-        order:1,
+        order: 1,
         labelHidden: false,
         placeholder: 'Enter your email address',
         isRequired: true,
@@ -62,23 +63,33 @@ export class AppComponent {
       }
     }
   };
+
+  public appPages = [
+    { title: 'Home', url: '/home', icon: 'home' },
+    { title: 'Blogs', url: '/blogs', icon: 'book' }
+  ];
+  public user: any = {};
+  private userSub: Subscription;
+
   constructor(
     private session: SessionService,
+    private zone: NgZone
   ) {
     Hub.listen('auth', async (data) => {
       console.log(`Amplify Auth Hub event`, data.payload.event);
       switch (data.payload.event) {
         case 'signIn':
           console.log('user signed in');
-          const user = data.payload.data.attributes;
-          await this.session.updateUser(user);
+            this.user = data.payload.data.attributes;
+            await this.session.updateUser(this.user);
           break;
         case 'signUp':
           console.log('user signed up');
           break;
         case 'signOut':
           console.log('user signed out');
-          await this.session.updateUser({});
+          this.user = {};
+          await this.session.updateUser(this.user);
           break;
         case 'signIn_failure':
           console.log('user sign in failed');
@@ -86,6 +97,33 @@ export class AppComponent {
         case 'configured':
           console.log('the Auth module is configured');
       }
+    });
+  }
+
+  async ngOnInit() {
+    await this.subscribeToUser();
+  }
+
+  ngOnDestroy() {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+  }
+
+  async signOut() {
+    await Auth.signOut();
+  }
+
+  private async subscribeToUser() {
+    this.user = this.session.getUser();
+    if (this.user.sub) {
+
+    }
+    this.userSub = this.session.getUserAsObservable().subscribe(async (user: any) => {
+      await this.zone.run(async () => {
+        this.user = user;
+        console.log(`HomePage.subscribeToUser() user`, this.user);
+      });
     });
   }
 }

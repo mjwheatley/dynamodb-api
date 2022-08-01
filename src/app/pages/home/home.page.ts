@@ -2,7 +2,6 @@ import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Auth } from 'aws-amplify';
 import { SessionService } from '../../services';
-import { APIService } from '../../API.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -19,8 +18,7 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(
     private zone: NgZone,
     private session: SessionService,
-    private toastCtrl: ToastController,
-    private apiService: APIService
+    private toastCtrl: ToastController
   ) {
   }
 
@@ -35,10 +33,6 @@ export class HomePage implements OnInit, OnDestroy {
     if (this.userSub) {
       this.userSub.unsubscribe();
     }
-  }
-
-  async signOut() {
-    await Auth.signOut();
   }
 
   public async copy({ label, text }: { label: string; text: string }) {

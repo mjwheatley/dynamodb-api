@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Blogs
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        (click)="createBlog()"
+      >
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="centered-limited-width ion-text-center">
+    <div *ngIf="!blogs?.length">
+      No Blogs
+    </div>
+    <ion-list *ngIf="blogs?.length">
+      <ion-item *ngFor="let item of blogs">
+        <p>{{item.name}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

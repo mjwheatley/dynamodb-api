@@ -1,4 +1,268 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateBlog(
+  $input: CreateBlogInput!
+  $condition: ModelBlogConditionInput
+) {
+  createBlog(input: $input, condition: $condition) {
+    id
+    name
+    posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+        owner
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdateBlog(
+  $input: UpdateBlogInput!
+  $condition: ModelBlogConditionInput
+) {
+  updateBlog(input: $input, condition: $condition) {
+    id
+    name
+    posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+        owner
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeleteBlog(
+  $input: DeleteBlogInput!
+  $condition: ModelBlogConditionInput
+) {
+  deleteBlog(input: $input, condition: $condition) {
+    id
+    name
+    posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+        owner
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation CreatePost(
+  $input: CreatePostInput!
+  $condition: ModelPostConditionInput
+) {
+  createPost(input: $input, condition: $condition) {
+    id
+    title
+    blog {
+      id
+      name
+      posts {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+        owner
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+    owner
+  }
+}
+mutation UpdatePost(
+  $input: UpdatePostInput!
+  $condition: ModelPostConditionInput
+) {
+  updatePost(input: $input, condition: $condition) {
+    id
+    title
+    blog {
+      id
+      name
+      posts {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+        owner
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+    owner
+  }
+}
+mutation DeletePost(
+  $input: DeletePostInput!
+  $condition: ModelPostConditionInput
+) {
+  deletePost(input: $input, condition: $condition) {
+    id
+    title
+    blog {
+      id
+      name
+      posts {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+        owner
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+    owner
+  }
+}
+mutation CreateComment(
+  $input: CreateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  createComment(input: $input, condition: $condition) {
+    id
+    post {
+      id
+      title
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+        owner
+      }
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      blogPostsId
+      owner
+    }
+    content
+    createdAt
+    updatedAt
+    postCommentsId
+    owner
+  }
+}
+mutation UpdateComment(
+  $input: UpdateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  updateComment(input: $input, condition: $condition) {
+    id
+    post {
+      id
+      title
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+        owner
+      }
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      blogPostsId
+      owner
+    }
+    content
+    createdAt
+    updatedAt
+    postCommentsId
+    owner
+  }
+}
+mutation DeleteComment(
+  $input: DeleteCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  deleteComment(input: $input, condition: $condition) {
+    id
+    post {
+      id
+      title
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+        owner
+      }
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      blogPostsId
+      owner
+    }
+    content
+    createdAt
+    updatedAt
+    postCommentsId
+    owner
+  }
+}
 mutation CreateTask(
   $input: CreateTaskInput!
   $condition: ModelTaskConditionInput
@@ -69,6 +333,54 @@ mutation DeletePrivateNote(
   deletePrivateNote(input: $input, condition: $condition) {
     id
     content
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation CreateNestTable(
+  $input: CreateNestTableInput!
+  $condition: ModelNestTableConditionInput
+) {
+  createNestTable(input: $input, condition: $condition) {
+    id
+    content
+    nest {
+      id
+      content
+    }
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdateNestTable(
+  $input: UpdateNestTableInput!
+  $condition: ModelNestTableConditionInput
+) {
+  updateNestTable(input: $input, condition: $condition) {
+    id
+    content
+    nest {
+      id
+      content
+    }
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeleteNestTable(
+  $input: DeleteNestTableInput!
+  $condition: ModelNestTableConditionInput
+) {
+  deleteNestTable(input: $input, condition: $condition) {
+    id
+    content
+    nest {
+      id
+      content
+    }
     createdAt
     updatedAt
     owner
