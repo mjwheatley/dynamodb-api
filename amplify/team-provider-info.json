@@ -1,0 +1,27 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dynamodbapi-prod-100136-authRole",
+      "UnauthRoleArn": "arn:aws:iam::104492362278:role/amplify-dynamodbapi-prod-100136-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::104492362278:role/amplify-dynamodbapi-prod-100136-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-dynamodbapi-prod-100136-deployment",
+      "UnauthRoleName": "amplify-dynamodbapi-prod-100136-unauthRole",
+      "StackName": "amplify-dynamodbapi-prod-100136",
+      "StackId": "arn:aws:cloudformation:us-east-1:104492362278:stack/amplify-dynamodbapi-prod-100136/d7d4e680-11aa-11ed-8fe3-0e6c3faf8b3b",
+      "AmplifyAppId": "d2t10gmvi09csb",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-dynamodbapi-prod-100136-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "DynamoDbApiAuth": {}
+      },
+      "function": {
+        "DynamoDbApiAuthPostConfirmation": {
+          "deploymentBucketName": "amplify-dynamodbapi-prod-100136-deployment",
+          "s3Key": "amplify-builds/DynamoDbApiAuthPostConfirmation-4e424269304952575a63-build.zip"
+        }
+      }
+    }
+  }
+}

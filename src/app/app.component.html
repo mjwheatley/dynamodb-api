@@ -1,3 +1,12 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <amplify-authenticator
+    class="ion-padding ion-margin"
+    [formFields]="formFields"
+  >
+    <ng-template
+      amplifySlot="authenticated"
+    >
+      <ion-router-outlet></ion-router-outlet>
+    </ng-template>
+  </amplify-authenticator>
 </ion-app>

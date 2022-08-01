@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-buttons
+      slot="end">
+      <ion-button
+        (click)="signOut()"
+      >
+        Sign Out
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="centered-limited-width ion-text-center">
+    <ion-card-header>
+      <ion-card-subtitle>
+        Welcome
+      </ion-card-subtitle>
+      <ion-card-title>
+        {{user.given_name}}&nbsp;{{user.family_name}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card>
+      <ion-card-content>
+        <ion-item
+          lines="none"
+        >
+          <ion-label>
+            ID Token
+          </ion-label>
+          <ion-button
+            slot="end"
+            size="small"
+            fill="clear"
+            (click)="copy({label:'ID Token', text: idToken})"
+          >
+            <ion-icon
+              slot="icon-only"
+              name="clipboard"
+            ></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-text>
+          {{idToken}}
+        </ion-text>
+        <ion-item
+          lines="none"
+        >
+          <ion-label>
+            Access Token
+          </ion-label>
+          <ion-button
+            slot="end"
+            size="small"
+            fill="clear"
+            (click)="copy({label:'Access Token', text: accessToken})"
+          >
+            <ion-icon
+              slot="icon-only"
+              name="clipboard"
+            ></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-text>
+          {{accessToken}}
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
