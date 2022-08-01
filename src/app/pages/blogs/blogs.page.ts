@@ -3,6 +3,7 @@ import { APIService } from '../../API.service';
 import { AlertController, AlertInput } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { SessionService } from '../../services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
@@ -18,7 +19,8 @@ export class BlogsPage implements OnInit, OnDestroy {
     private apiService: APIService,
     private alertCtrl: AlertController,
     private session: SessionService,
-    private zone: NgZone
+    private zone: NgZone,
+    private router: Router
   ) {
   }
 
@@ -66,6 +68,10 @@ export class BlogsPage implements OnInit, OnDestroy {
       ]
     });
     await alert.present();
+  }
+
+  async navigate(item: any) {
+    await this.router.navigateByUrl(`/blogs/blog/${item.id}`, { state: item });
   }
 
   private setBlogs(blogs: any[]) {
