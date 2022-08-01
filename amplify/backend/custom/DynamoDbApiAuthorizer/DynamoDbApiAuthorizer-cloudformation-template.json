@@ -1,0 +1,69 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "env": {
+      "Type": "String"
+    },
+    "authDynamoDbApiAuthIdentityPoolId": {
+      "Type": "String",
+      "Description": "Input parameter describing IdentityPoolId attribute for auth/DynamoDbApiAuth resource"
+    },
+    "authDynamoDbApiAuthIdentityPoolName": {
+      "Type": "String",
+      "Description": "Input parameter describing IdentityPoolName attribute for auth/DynamoDbApiAuth resource"
+    },
+    "authDynamoDbApiAuthUserPoolId": {
+      "Type": "String",
+      "Description": "Input parameter describing UserPoolId attribute for auth/DynamoDbApiAuth resource"
+    },
+    "authDynamoDbApiAuthUserPoolArn": {
+      "Type": "String",
+      "Description": "Input parameter describing UserPoolArn attribute for auth/DynamoDbApiAuth resource"
+    },
+    "authDynamoDbApiAuthUserPoolName": {
+      "Type": "String",
+      "Description": "Input parameter describing UserPoolName attribute for auth/DynamoDbApiAuth resource"
+    },
+    "authDynamoDbApiAuthAppClientIDWeb": {
+      "Type": "String",
+      "Description": "Input parameter describing AppClientIDWeb attribute for auth/DynamoDbApiAuth resource"
+    },
+    "authDynamoDbApiAuthAppClientID": {
+      "Type": "String",
+      "Description": "Input parameter describing AppClientID attribute for auth/DynamoDbApiAuth resource"
+    },
+    "apiDynamoDbApiRootUrl": {
+      "Type": "String",
+      "Description": "Input parameter describing RootUrl attribute for api/DynamoDbApi resource"
+    },
+    "apiDynamoDbApiApiName": {
+      "Type": "String",
+      "Description": "Input parameter describing ApiName attribute for api/DynamoDbApi resource"
+    },
+    "apiDynamoDbApiApiId": {
+      "Type": "String",
+      "Description": "Input parameter describing ApiId attribute for api/DynamoDbApi resource"
+    }
+  },
+  "Resources": {
+    "CognitoAuthorizer": {
+      "Type": "AWS::ApiGateway::Authorizer",
+      "Properties": {
+        "AuthorizerResultTtlInSeconds": 300,
+        "IdentitySource": "method.request.header.Authorization",
+        "Name": "CognitoAuthorizer",
+        "ProviderARNs": [
+          {
+            "Ref": "authDynamoDbApiAuthUserPoolArn"
+          }
+        ],
+        "RestApiId": {
+          "Ref": "apiDynamoDbApiApiId"
+        },
+        "Type": "COGNITO_USER_POOLS"
+      }
+    }
+  },
+  "Outputs": {},
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"9.1.0\",\"stackType\":\"custom-customCloudformation\",\"metadata\":{}}"
+}

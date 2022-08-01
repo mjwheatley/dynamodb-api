@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "storage": {
+      "Blog:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Post:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Comment:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Task:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "PrivateNote:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "NestTable:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
