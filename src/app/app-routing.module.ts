@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'blogs',
     loadChildren: () => import('./pages/blogs/blogs.module').then( m => m.BlogsPageModule)
   },
+  {
+    path: 'nests',
+    loadChildren: () => import('./pages/nests/nests.module').then( m => m.NestsPageModule)
+  },
 ];
 
 @NgModule({

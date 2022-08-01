@@ -66,7 +66,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
-    { title: 'Blogs', url: '/blogs', icon: 'book' }
+    { title: 'Blogs', url: '/blogs', icon: 'book' },
+    { title: 'Nests', url: '/nests', icon: 'copy' }
   ];
   public user: any = {};
   private userSub: Subscription;
