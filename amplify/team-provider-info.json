@@ -26,6 +26,12 @@
           "deploymentBucketName": "amplify-dynamodbapi-prod-100136-deployment",
           "s3Key": "amplify-builds/DynamoDbApi-76626b4662524977744a-build.zip"
         }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2t10gmvi09csb",
+          "type": "manual"
+        }
       }
     }
   }
